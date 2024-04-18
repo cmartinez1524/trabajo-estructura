@@ -10,6 +10,23 @@ typedef struct {
 
 } paciente;
 
+void ordenar_por_prioridad(List *pacientes) 
+{
+    int n = list_size(pacientes);
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            paciente *paciente_actual = (paciente *)list_get(pacientes, j);
+            paciente *paciente_siguiente = (paciente *)list_get(pacientes, j + 1);
+            if (paciente_actual->prioridad > paciente_siguiente->prioridad) {
+                // Intercambiar los pacientes
+                paciente temp = *paciente_actual;
+                *paciente_actual = *paciente_siguiente;
+                *paciente_siguiente = temp;
+
+            }
+        }
+    }
+}
 
 // Función para limpiar la pantalla
 void limpiarPantalla() 
@@ -61,7 +78,7 @@ void registrar_paciente(List *pacientes) {
     nuevo->prioridad = 1;
     printf("Prioridad del paciente: %d\n", nuevo->prioridad);
     // Insertar el nuevo paciente en la lista de pacientes
-    list_pushBack(pacientes, nuevo);
+    list_pushFront(pacientes, nuevo);
     printf("Paciente registrado con éxito\n");
 }
 
@@ -74,7 +91,7 @@ void asignar_prioridad(List *pacientes)
     // Mostrar elementos (recorrido desde el principio)
     for (paciente *paciente = list_first(pacientes); paciente != NULL; paciente = list_next(pacientes))
     {
-        printf("Nombre: %s, Edad: %d, Prioridad: %d, indice: %d \n", paciente->nombre, paciente->edad, paciente->prioridad, indice);
+      printf("Nombre: %s, Edad: %d,Sintoma: %s,  Prioridad: %d \n", paciente->nombre, paciente->edad, paciente->sintoma, paciente->prioridad);
         indice++;
     }
 
@@ -97,6 +114,7 @@ void asignar_prioridad(List *pacientes)
     printf("3) Alta\n");
     printf("Escriba la prioridad que desea asignar: ");
     scanf("%d", &paciente_seleccionado->prioridad);
+    ordenar_por_prioridad(pacientes);
 }
 
 void mostrar_lista_pacientes(List *pacientes) {
@@ -106,7 +124,7 @@ void mostrar_lista_pacientes(List *pacientes) {
     //pacientes = ordenar_por_prioridad(pacientes);
     for (paciente *paciente = list_first(pacientes); paciente != NULL; paciente = list_next(pacientes))
     {
-        printf("Nombre: %s, Edad: %d, Prioridad: %d \n", paciente->nombre, paciente->edad, paciente->prioridad);
+        printf("Nombre: %s, Edad: %d,Sintoma: %s,  Prioridad: %d \n", paciente->nombre, paciente->edad, paciente->sintoma, paciente->prioridad);
     }
 }
 
@@ -116,9 +134,9 @@ void atender_siguiente_paciente(List *pacientes) {
         return;
     }
 
-    paciente *siguiente = (paciente *)list_popFront(pacientes);
+    paciente *siguiente = (paciente *)list_popBack(pacientes);
     printf("Atendiendo al siguiente paciente:\n");
-    printf("Nombre: %s, Edad: %d, Prioridad: %d\n", siguiente->nombre, siguiente->edad, siguiente->prioridad);
+  printf("Nombre: %s, Edad: %d,Sintoma: %s,  Prioridad: %d \n", siguiente->nombre, siguiente->edad, siguiente->sintoma, siguiente->prioridad);
     free(siguiente); // Liberar la memoria del paciente atendido
 }
 

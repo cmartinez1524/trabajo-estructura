@@ -34,15 +34,13 @@ void *list_popCurrent(List *L);
 // Esta función elimina todos los elementos de la lista.
 void list_clean(List *L);
 
-
 //Funcion para obtener el dato de un nodo en especifico de la lista, 
 void *list_get(List *L, int index);
 
 //Funcion para obtener el tamaño de la lista
 int list_size(List *L);
 
-//Funcion para ordenar los elementos de la lista por su prioridad
-//void ordenar_por_prioridad(List *L);
+
 
 
 
