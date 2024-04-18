@@ -2,11 +2,14 @@
 # trabajo-estructura
 
 Para ejecutar el main primero debemos compilar (en la carpeta raíz)
+
 gcc tdas/*.c main.c -Wno-unused-result -o main
+
 Y luego ejecutar:
+
 ./main
 
-Un detalle es que el ultimo de la lista enlazada es el primero en ser atendido no al reves osea si aplico el comando de list.first estamos accediendo al ultimo en realidad
+Un detalle es que el ultimo de la lista enlazada es el primero en ser atendido no al reves osea si aplico el comando de list.first estamos accediendo al ultimo paciente en realidad
 
 Se incluyen las bibliotecas necesarias y se define la estructura paciente, que representa la información de un paciente, incluyendo su nombre, edad, síntoma y prioridad.
 

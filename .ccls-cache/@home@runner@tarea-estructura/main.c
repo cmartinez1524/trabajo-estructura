@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//LEER README.MD
+
 typedef struct {
     char nombre[50];
     int edad;
@@ -91,7 +93,7 @@ void asignar_prioridad(List *pacientes)
     // Mostrar elementos (recorrido desde el principio)
     for (paciente *paciente = list_first(pacientes); paciente != NULL; paciente = list_next(pacientes))
     {
-      printf("Nombre: %s, Edad: %d,Sintoma: %s,  Prioridad: %d \n", paciente->nombre, paciente->edad, paciente->sintoma, paciente->prioridad);
+      printf("Nombre: %s, Edad: %d, Sintoma: %s,  Prioridad: %d, indice: %d \n", paciente->nombre, paciente->edad, paciente->sintoma, paciente->prioridad, indice);
         indice++;
     }
 
@@ -124,7 +126,7 @@ void mostrar_lista_pacientes(List *pacientes) {
     //pacientes = ordenar_por_prioridad(pacientes);
     for (paciente *paciente = list_first(pacientes); paciente != NULL; paciente = list_next(pacientes))
     {
-        printf("Nombre: %s, Edad: %d,Sintoma: %s,  Prioridad: %d \n", paciente->nombre, paciente->edad, paciente->sintoma, paciente->prioridad);
+        printf("Nombre: %s, Edad: %d, Sintoma: %s,  Prioridad: %d \n", paciente->nombre, paciente->edad, paciente->sintoma, paciente->prioridad);
     }
 }
 
@@ -136,7 +138,7 @@ void atender_siguiente_paciente(List *pacientes) {
 
     paciente *siguiente = (paciente *)list_popBack(pacientes);
     printf("Atendiendo al siguiente paciente:\n");
-  printf("Nombre: %s, Edad: %d,Sintoma: %s,  Prioridad: %d \n", siguiente->nombre, siguiente->edad, siguiente->sintoma, siguiente->prioridad);
+  printf("Nombre: %s, Edad: %d, Sintoma: %s,  Prioridad: %d \n", siguiente->nombre, siguiente->edad, siguiente->sintoma, siguiente->prioridad);
     free(siguiente); // Liberar la memoria del paciente atendido
 }
 
@@ -169,7 +171,6 @@ int main() {
             registrar_paciente(pacientes);
             break;
         case '2':
-            // Lógica para asignar prioridad
             asignar_prioridad(pacientes);
             break;
         case '3':
@@ -179,7 +180,6 @@ int main() {
             atender_siguiente_paciente(pacientes);
             break;
         case '5':
-        //Solicitar al usuario que ingrese la prioridad
             mostrar_pacientes_por_prioridad(pacientes);
             break;
 
@@ -193,7 +193,6 @@ int main() {
 
     } while (opcion != '6');
 
-    // Liberar recursos, si es necesario
     list_clean(pacientes);
 
     return 0;
