@@ -93,6 +93,8 @@ void list_pushCurrent(List *L, void *data) {
   }
 }
 
+
+
 void list_sortedInsert(List *L, void *data,
                        int (*lower_than)(void *data1, void *data2)) {
   if (L == NULL) {
@@ -110,6 +112,7 @@ void list_sortedInsert(List *L, void *data,
   while (current->next != NULL && !lower_than(data, current->next->data)) {
     current = current->next;
   }
+  
 
   // Preparar para usar list_pushCurrent
   L->current = current;

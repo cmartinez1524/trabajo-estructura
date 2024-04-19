@@ -3,33 +3,28 @@
 
 Para ejecutar el main primero debemos compilar (en la carpeta raíz)
 
-gcc tdas/*.c main.c -Wno-unused-result -o main
+**gcc tdas/*.c main.c -Wno-unused-result -o main**
 
 Y luego ejecutar:
 
-./main
+**./main**
 
-Un detalle es que el ultimo de la lista enlazada es el primero en ser atendido no al reves osea si aplico el comando de list.first estamos accediendo al ultimo paciente en realidad
+Funcionalidades Disponibles:
 
-Se incluyen las bibliotecas necesarias y se define la estructura paciente, que representa la información de un paciente, incluyendo su nombre, edad, síntoma y prioridad.
+Registrar Paciente (Opción 1):
+Permite registrar un nuevo paciente ingresando su nombre, edad y síntomas.
 
-Se definen funciones auxiliares limpiarPantalla y presioneTeclaParaContinuar para mejorar la presentación y la interacción con el usuario.
+Asignar Prioridad a Paciente (Opción 2):
+Permite asignar una prioridad (1-3) a un paciente registrado.
 
-La función mostrarMenuPrincipal muestra el menú de opciones disponibles en el sistema.
+Mostrar Lista de Espera (Opción 3):
+Muestra la lista de todos los pacientes registrados, junto con su nombre, edad y síntomas.
 
-registrar_paciente permite al usuario registrar un nuevo paciente, ingresando su nombre, edad, síntoma y asignando automáticamente una prioridad predeterminada.
+Atender al Siguiente Paciente (Opción 4):
+Atiende al próximo paciente en la lista de espera, mostrando su nombre, edad y síntomas.
 
-asignar_prioridad permite al usuario asignar una prioridad específica a un paciente seleccionado de la lista.
+Mostrar Pacientes por Prioridad (Opción 5):
+Permite al usuario especificar una prioridad (1-3) y muestra todos los pacientes con esa prioridad.
 
-La función ordenar_por_prioridad se encarga de ordenar la lista de pacientes por prioridad utilizando el algoritmo de bubble sort. Esto garantiza que los pacientes con prioridad más alta se atiendan primero.
-
-mostrar_lista_pacientes muestra la lista de pacientes en espera, mostrando su nombre, edad y prioridad.
-
-atender_siguiente_paciente atiende al siguiente paciente en la lista de espera, mostrando su información y liberando la memoria correspondiente.
-
-mostrar_pacientes_por_prioridad permite al usuario ver todos los pacientes que tienen una prioridad específica.
-
-En la función main, se crea una lista de pacientes y se ejecuta un bucle para mostrar el menú principal, leer la opción del usuario y ejecutar la acción correspondiente según la opción seleccionada.
-
-El programa continúa ejecutándose hasta que el usuario elige salir (opción 6), momento en el que se liberan los recursos y el programa finaliza.
-
+Salir del Programa (Opción 6):
+Permite salir del sistema de gestión hospitalaria.
